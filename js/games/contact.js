@@ -36,7 +36,6 @@ class ContactGame {
         var spaceShipImg = document.createElement("img")
         spaceShipImg.setAttribute("src", "images/sars.png");
 
-        // movingObject.setAttribute("style", `width: ${this.spaceShipSize}px; height: ${this.spaceShipSize}px`)
         movingObject.appendChild(spaceShipImg)
         movingObject.className = "movingObject"
         
