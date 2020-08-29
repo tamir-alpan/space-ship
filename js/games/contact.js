@@ -13,7 +13,7 @@ class ContactGame {
     init() {
         this.contactGameContainer = document.querySelector(this.cssSelector)
         var movingObject = this.appendMovingObject(this.contactGameContainer)
-        // this.play(movingObject);
+        this.play(movingObject);
     }
     
     play(movingObject) {
