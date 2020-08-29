@@ -1,0 +1,45 @@
+body {
+    margin: 0px;
+   
+    
+}
+
+.movingObject {
+    /* width: 150px; */
+    /* height: 150px; */
+    /* border-radius: 50%; */
+    /* background-color: red; */
+    /* position: absolute; */
+    transition: 0.8s;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.movingObject.win {
+    width: 100px;
+    height: 100px;
+}
+
+.contact-container {
+    padding-top: 15px;
+    height: 100%;
+    background-image: url("images/medow.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-style: oblique;
+}
+
+h1 {
+    background-color: seagreen;
+}
+
+
+html, body, main {
+    height: 100%;
+}
+
+header {
+    text-align: center;
+}
