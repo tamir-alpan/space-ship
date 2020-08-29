@@ -4,62 +4,66 @@ class ContactGame {
     cssSelector;
     spaceShipSize = 150;
     contactGameContainer;
+    interval = 500;
 
     constructor(cssSelector) {
         this.cssSelector = cssSelector;
     }
 
     init() {
-        
         this.contactGameContainer = document.querySelector(this.cssSelector)
         var movingObject = this.appendMovingObject(this.contactGameContainer)
-        movingObject.setAttribute("style", `width: ${this.spaceShipSize}px; height: ${this.spaceShipSize}px`)
+        // this.play(movingObject);
+    }
+    
+    play(movingObject) {
         this.relocateMovingObject(movingObject)
         timer = setInterval(() => {
             this.relocateMovingObject(movingObject)
-        }, 3000)
+        }, this.interval)
     }
 
     appendPlayAgain() {
-        
         var button = document.createElement("button")
         button.innerHTML = "play again"
-        var c = document.querySelector(".movingObject");
+        var c = document.querySelector(".contact-container");
         button.onclick = () => this.init();
         c.appendChild(button)
     }
-    
-    appendMovingObject(htmlElement) {
+
+    appendMovingObject(htmlContainer) {
         var movingObject = document.createElement("div")
         var spaceShipImg = document.createElement("img")
-        spaceShipImg.setAttribute ("src", "images/flying-saucer.png");
-        spaceShipImg.setAttribute("height", "100");
-        spaceShipImg.setAttribute("width", "100");
+        spaceShipImg.setAttribute("src", "images/sars.png");
+
+        // movingObject.setAttribute("style", `width: ${this.spaceShipSize}px; height: ${this.spaceShipSize}px`)
         movingObject.appendChild(spaceShipImg)
         movingObject.className = "movingObject"
-        htmlElement.onclick = () => {
-            movingObject.setAttribute("style", "width: 100%; height: 100%");
+        
+        movingObject.onclick = () => {
+            movingObject.classList.add("win")
             clearInterval(timer);
-            this.appendPlayAgain();
+            this.appendPlayAgain()
+            var messege = document.querySelector(".status")
+            messege.classList.add("win")
+            messege.innerHTML = "you should'nt have done that!!!"
         }
-        htmlElement.appendChild(movingObject)
+        htmlContainer.appendChild(movingObject);
+        
         return movingObject
     }
+    
 
     relocateMovingObject(movingObjectHtmlElement) {
         var main = document.querySelector('main');
         var offSet = 75
-        var x = this.getRandomArbitrary(0, main.clientWidth - this.spaceShipSize - offSet)
-        var y = this.getRandomArbitrary(0, main.clientHeight - this.spaceShipSize - offSet)
+        var x = this.getRandom(0, main.clientWidth - this.spaceShipSize - offSet)
+        var y = this.getRandom(0, main.clientHeight - this.spaceShipSize - offSet)
+        // TODO: We should limit the distance between x and y to avoid too small movements
         movingObjectHtmlElement.setAttribute("style", `transform: translate(${x}px, ${y}px)`)
     }
 
     getRandom(min, max) {
         return Math.round(Math.random() * (max - min) + min);
-    }
-
-    getRandomArbitrary(min, max) {
-        return this.getRandom(min, max);
-
     }
 }

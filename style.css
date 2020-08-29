@@ -5,41 +5,51 @@ body {
 }
 
 .movingObject {
-    /* width: 150px; */
-    /* height: 150px; */
-    /* border-radius: 50%; */
-    /* background-color: red; */
-    /* position: absolute; */
-    transition: 0.8s;
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
-}
-
-.movingObject.win {
     width: 100px;
     height: 100px;
+    background-color: transparent;
+    position: absolute;
+    transition: 0.9s;
 }
+
+.movingObject img {
+    width: 100%;
+}
+
 
 .contact-container {
     padding-top: 15px;
-    height: 100%;
+    height: calc(100% - 51.49px);
     background-image: url("images/medow.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     text-align: center;
     font-style: oblique;
+    font-size: 30px;
 }
 
-h1 {
-    background-color: seagreen;
+.movingObject.win {
+
+    height: 100%;
+    width: 100%;
 }
+
+
 
 
 html, body, main {
     height: 100%;
 }
 
-header {
+.status {
     text-align: center;
+    font-size: 30px;
+    font-style: oblique;
+    background-color: violet;
+}
+.status.win {
+    text-align: center;
+    font-size: 30px;
+    font-style: oblique;
+    background-color: red;
 }
